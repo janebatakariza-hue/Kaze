@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 public class Main{
-        public static void main(String []args){
+        public static void main(String []args) throws InvalidIdException{
             Person p= new User();
             User u= new User();
             Person g= new Guest();
@@ -26,6 +26,9 @@ public class Main{
 
             System.out.println("Enter your id:");
             Integer id= input.nextInt();
+            if(id<=0){
+                throw new InvalidIdException("Id is zero or negative");
+            }
             p.callId(id);
 
             input.nextLine();
@@ -46,11 +49,16 @@ public class Main{
             Integer Gid= input.nextInt();
             g.callEmail(String.valueOf(Gid));
 
-//
-//            System.out.println("Your name is:" +g.Gname);
-//            System.out.println("Guest's phone number is:" +g.Gphone);
-//            System.out.println("Guest's id is:" +g.Gid);
 
+
+            System.out.println("Your user name is:" + p.name);
+            System.out.println("Your user email is:" + p.email);
+            System.out.println("Your user phone is:" + p.phone);
+            System.out.println("Your user id is:" + p.id);
+            System.out.println("Your guest name is:" + g.name);
+            System.out.println("Your guest phone is:" + g.phone);
+            System.out.println("Your guest email is:" + g.email);
+            System.out.println("Your guest id is:" + g.id);
             l.callRole("Guest");
             u.callRole("User");
         }
